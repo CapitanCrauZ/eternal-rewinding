@@ -4,51 +4,98 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float x,y;
-    public float velocidadRotación = 50;
-    public float velocidadMovimiento = 10;
-    public float fuerzaSalto = 8f;
-    public int velocidadCorrer = 15;
-    public Animator anim;
-    public Rigidbody rb;
-    // public Animator anim;
+    public float horizontalmove;
+    public float verticalmove;
+    public float rotateSpeed = 50;
+    public float playerSpeed = 10;
+    public float fallVelocity;
+    public float jumpForce;
+    public float gravity;
 
+    public int playerRunSpeed = 15;
+
+    public Camera mainCamera;
+    public Animator anim;
+    public CharacterController player;
+
+    private Vector3 camForward;
+    private Vector3 camRight;
+    private Vector3 movePlayer;
+    private Vector3 playerInput;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //Con esto se definen los controles
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Vertical");
+        horizontalmove = Input.GetAxis("Horizontal");
+        verticalmove = Input.GetAxis("Vertical");
 
+        //Funcion para correr
         if (Input.GetKey(KeyCode.LeftShift)){
-            velocidadMovimiento = velocidadCorrer;
+            playerSpeed = playerRunSpeed;
         }
         else
         {
-            velocidadMovimiento = 10;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space)){
-            rb.AddForce(new Vector3(0, fuerzaSalto, 0), ForceMode.Impulse);
+            playerSpeed = 10;
         }
 
         //Con esto se mueve el personaje
-        transform.Rotate(0, x * Time.deltaTime * velocidadRotación, 0);
-        transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento);
+
+            // transform.Rotate(0, horizontalmove * Time.deltaTime * rotateSpeed, 0);
+            // transform.Translate(0, 0, verticalmove * Time.deltaTime * playerSpeed);
+
+        playerInput = new Vector3(horizontalmove, 0, verticalmove);
+
+        CamDirection();
+
+        movePlayer = playerInput.x * camRight + playerInput.z * camForward;
+
+        movePlayer = movePlayer * playerSpeed;
+
+        SetGravity();
+
+        PlayerSkills();
+
+        player.Move(movePlayer * Time.deltaTime);
+
+        anim.SetFloat("VelX", horizontalmove);
+        anim.SetFloat("VelY", verticalmove);
+
+    }
+
+    void CamDirection(){
+        camForward = mainCamera.transform.forward;
+        camRight = mainCamera.transform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
+    }
+
+    public void SetGravity(){
+        if(player.isGrounded){
+            fallVelocity = -gravity * Time.deltaTime; 
+            movePlayer.y = fallVelocity;
+        }
+        else{
+            fallVelocity -= gravity * Time.deltaTime; 
+            movePlayer.y = fallVelocity;
+        }
         
+    }
 
-
-        // anim.SetFloat("VelX",x);
-        // anim.SetFloat("VelY",y);
-
-        anim.SetFloat("VelX", x);
-        anim.SetFloat("VelY", y);
+    public void PlayerSkills(){
+        if (player.isGrounded && Input.GetButtonDown("Jump")){
+            fallVelocity = jumpForce;
+            movePlayer.y = fallVelocity;
+        }
     }
 }

@@ -1,4 +1,4 @@
-# Eternal-Rewinding Game Project
+# Eternal Rewinding | 3D Unity Game Project
 
 ### Developer
 - CaptainCrauZ
