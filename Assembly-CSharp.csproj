@@ -56,13 +56,13 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Player\ThirdPerson.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Enemies\BossSlimeNavegation.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySpawn.cs" />
+    <Compile Include="Assets\Scripts\Player\LifeSystem.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyRutine.cs" />
     <Compile Include="Assets\Scripts\Movimiento.cs" />
-    <Compile Include="Assets\Scripts\Player\LifeSystem.cs" />
-    <Compile Include="Assets\Scripts\Player\ThirdPerson.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
