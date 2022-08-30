@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float horizontalmove;
     public float verticalmove;
-    public float rotateSpeed = 10f;
+    public float rotateSpeed = 2f;
     public float playerSpeed = 10f;
     public float fallVelocity;
     public float jumpForce;
@@ -23,9 +23,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 camForward;
     private Vector3 camRight;
     private Vector3 movePlayer;
-    private Vector3 rotePlayer;
     private Vector3 playerInput;
-    private Vector3 playerRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -53,34 +51,26 @@ public class PlayerController : MonoBehaviour
 
         playerInput = new Vector3(horizontalmove, 0, verticalmove);
 
-        // playerRotation = new Vector3(verticalmove, horizontalmove, 0);
-
-        playerRotation = new Vector3(0, horizontalmove * rotateSpeed, 0);
-
         CamDirection();
 
         movePlayer = playerInput.x * camRight + playerInput.z * camForward;
 
-        rotePlayer = playerRotation.z * camRight + playerRotation.z * camForward;
-
         movePlayer = movePlayer * playerSpeed;
-
-        rotePlayer = rotePlayer * rotateSpeed;
 
         SetGravity();
 
         PlayerSkills();
 
         player.Move(movePlayer * Time.deltaTime);
-
-        transform.Rotate(0, horizontalmove * rotateSpeed, 0);
+        player.transform.Rotate(0, horizontalmove * rotateSpeed, 0);
 
         anim.SetFloat("VelX", horizontalmove);
         anim.SetFloat("VelY", verticalmove);
 
     }
 
-    void CamDirection(){
+    void CamDirection()
+    {
         camForward = mainCamera.transform.forward;
         camRight = mainCamera.transform.right;
 

@@ -356,7 +356,9 @@
 "Assets/Scripts/Enemies/EnemyRutine.cs"
 "Assets/Scripts/Enemies/EnemySpawn.cs"
 "Assets/Scripts/Movimiento.cs"
+"Assets/Scripts/Player/LifeSystem.cs"
 "Assets/Scripts/Player/PlayerController.cs"
+"Assets/Scripts/Player/ThirdPerson.cs"
 -langversion:9.0
 
 /deterministic
