@@ -8,13 +8,15 @@ public class PlayerController : MonoBehaviour
     public float verticalmove;
     public float rotateSpeed = 2f;
     public float playerSpeed = 10f;
+    public float runSpeed = 15f;
     public float fallVelocity;
     public float jumpForce;
     public float gravity;
+    public float dashSpeed;
+    public float dashTime;
+    public float cooldown;
 
-    public bool OnGround = true;
-
-    public int playerRunSpeed = 15;
+    float lastSkill;
 
     public Camera mainCamera;
     public Animator anim;
@@ -37,15 +39,6 @@ public class PlayerController : MonoBehaviour
         //Con esto se definen los controles
         horizontalmove = Input.GetAxis("Horizontal");
         verticalmove = Input.GetAxis("Vertical");
-
-        //Funcion para correr
-        if (Input.GetKey(KeyCode.LeftShift)){
-            playerSpeed = playerRunSpeed;
-        }
-        else
-        {
-            playerSpeed = 10;
-        }
 
         //Con esto se mueve el personaje
 
@@ -90,14 +83,60 @@ public class PlayerController : MonoBehaviour
             fallVelocity -= gravity * Time.deltaTime; 
             movePlayer.y = fallVelocity;
         }
-        
     }
 
     public void PlayerSkills(){
-        if (player.isGrounded && Input.GetButtonDown("Jump")){
+        
+        // JUMP
+        if (player.isGrounded && Input.GetKey(KeyCode.Space)){
             fallVelocity = jumpForce;
             movePlayer.y = fallVelocity;
-            anim.SetBool("Ground", OnGround);
+            anim.SetBool("Ground", true);
         }
+        // DASH
+        else if (Input.GetKey(KeyCode.LeftControl)){
+            StartCoroutine(Dash());
+            anim.SetBool("Dash", true);
+            SkillCoolDown();
+        }
+        // RUN
+        else if (Input.GetKey(KeyCode.LeftShift)){
+            playerSpeed = runSpeed;
+        }
+        // KICK
+        else if (Input.GetKey(KeyCode.UpArrow)){
+            anim.SetBool("Kick", true);
+            SkillCoolDown();
+        }
+        // PUNCH
+        else if (Input.GetKey(KeyCode.DownArrow)){
+            anim.SetBool("Punch", true);
+            SkillCoolDown();
+        }
+        // UPPERCUT
+        else if (Input.GetKey(KeyCode.LeftArrow)){
+            anim.SetBool("Uppercut", true);
+            SkillCoolDown();
+        } 
+
+        else{
+            playerSpeed = 10;
+        }
+    }
+
+    IEnumerator Dash(){
+        float startTime = Time.time;
+
+        while(Time.time < startTime + dashTime){
+            player.Move(camForward * dashSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    public void SkillCoolDown(){
+        if(Time.time-lastSkill<cooldown){
+            return;
+        }
+        lastSkill = Time.time;
     }
 }
