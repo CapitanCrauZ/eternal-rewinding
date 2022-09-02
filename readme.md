@@ -30,8 +30,7 @@ Progress of the development of the project
 ### Demo
 
 ##### v01
-<video controls width="400" height="200" src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/video/demoMnts.mkv" type="video/mkv">
-</video>
+<img src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/video/demoMnts.mkv" width="70%" height="70%">
 
 ### Developer
 - CaptainCrauZ
