@@ -3786,7 +3786,7 @@ MonoBehaviour:
   verticalmove: 0
   rotateSpeed: 0.8
   playerSpeed: 10
-  runSpeed: 15
+  runSpeed: 25
   fallVelocity: 0
   jumpForce: 2
   gravity: 15

@@ -21,11 +21,19 @@ Skills that are working
 ### Screenshots
 Progress of the development of the project
 
-##### Demo v01
-<img src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/screenshots/demoV01.png" width="100%" height="70%">
+##### v01
+<img src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/screenshots/demoV01.png" width="70%" height="70%">
 
-##### Demo v02
-<img src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/screenshots/demoV02.png" width="100%" height="70%">
+##### v02
+<img src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/screenshots/demoV02.png" width="70%" height="70%">
+
+### Demo
+
+##### v01
+<video controls width="400" height="200">
+    <source src="/media/video/demoMnts.mkv" type="video/mkv">>
+    Su navegador no puede reproducir este formato de video
+</video>
 
 ### Developer
 - CaptainCrauZ
