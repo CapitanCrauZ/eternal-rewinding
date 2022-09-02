@@ -31,7 +31,7 @@ Progress of the development of the project
 
 ##### v01
 <video controls width="400" height="200">
-    <source src="/media/video/demoMnts.mkv" type="video/mkv">>
+    <source src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/video/demoMnts.mkv" type="video/mkv">>
     Su navegador no puede reproducir este formato de video
 </video>
 
