@@ -88,35 +88,37 @@ public class PlayerController : MonoBehaviour
     public void PlayerSkills(){
         
         // JUMP
-        if (player.isGrounded && Input.GetKey(KeyCode.Space)){
+        if (player.isGrounded && Input.GetKeyDown(KeyCode.Space)){
             fallVelocity = jumpForce;
             movePlayer.y = fallVelocity;
             anim.SetBool("Ground", true);
         }
         // DASH
-        else if (Input.GetKey(KeyCode.LeftControl)){
+        else if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftControl)){
             StartCoroutine(Dash());
             anim.SetBool("Dash", true);
-            SkillCoolDown();
+        }
+        // BACK DASH
+        else if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.LeftControl)){
+            StartCoroutine(BackDash());
+            anim.SetBool("BackDash", true);
         }
         // RUN
         else if (Input.GetKey(KeyCode.LeftShift)){
             playerSpeed = runSpeed;
+            anim.SetBool("Run", true);
         }
         // KICK
-        else if (Input.GetKey(KeyCode.UpArrow)){
+        else if (Input.GetKeyDown(KeyCode.G)){
             anim.SetBool("Kick", true);
-            SkillCoolDown();
         }
         // PUNCH
-        else if (Input.GetKey(KeyCode.DownArrow)){
+        else if (Input.GetKeyDown(KeyCode.H)){
             anim.SetBool("Punch", true);
-            SkillCoolDown();
         }
         // UPPERCUT
-        else if (Input.GetKey(KeyCode.LeftArrow)){
+        else if (Input.GetKeyDown(KeyCode.J)){
             anim.SetBool("Uppercut", true);
-            SkillCoolDown();
         } 
 
         else{
@@ -129,6 +131,16 @@ public class PlayerController : MonoBehaviour
 
         while(Time.time < startTime + dashTime){
             player.Move(camForward * dashSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator BackDash()
+    {
+        float startTime = Time.time;
+
+        while(Time.time < startTime + dashTime){
+            player.Move(-camForward * dashSpeed * Time.deltaTime);
             yield return null;
         }
     }

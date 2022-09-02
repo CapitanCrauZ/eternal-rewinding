@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 282717890}
   - component: {fileID: 282717889}
   m_Layer: 5
-  m_Name: LifeBar
+  m_Name: DashSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,7 +1784,7 @@ GameObject:
   - component: {fileID: 1042329881}
   - component: {fileID: 1042329880}
   m_Layer: 5
-  m_Name: LifeBar
+  m_Name: PunchSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2462,7 +2462,7 @@ GameObject:
   - component: {fileID: 1501298375}
   - component: {fileID: 1501298374}
   m_Layer: 5
-  m_Name: LifeBar
+  m_Name: UltimateSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3052,7 +3052,7 @@ GameObject:
   - component: {fileID: 1825965492}
   - component: {fileID: 1825965491}
   m_Layer: 5
-  m_Name: LifeBar
+  m_Name: UppercutSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3341,7 +3341,7 @@ GameObject:
   - component: {fileID: 1985670910}
   - component: {fileID: 1985670909}
   m_Layer: 5
-  m_Name: LifeBar
+  m_Name: KickSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3848,4 +3848,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 80
   maxLife: 100
+  punch: 50
+  punchUsed: 100
+  ultimate: 50
+  ultimateUsed: 100
+  kick: 50
+  kickUsed: 100
+  dash: 50
+  dashUsed: 100
+  uppercut: 50
+  uppercutUsed: 100
   lifeBar: {fileID: 549349867}
+  punchSquare: {fileID: 1042329880}
+  ultimateSquare: {fileID: 1501298374}
+  kickSquare: {fileID: 1985670909}
+  dashSquare: {fileID: 282717889}
+  uppercutSquare: {fileID: 1825965491}
