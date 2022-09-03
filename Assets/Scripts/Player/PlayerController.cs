@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerSkills(){
         
         // JUMP
-        if (player.isGrounded && Input.GetKeyDown(KeyCode.Space)){
+        if (player.isGrounded && Input.GetKeyDown(KeyCode.Space) ){
             fallVelocity = jumpForce;
             movePlayer.y = fallVelocity;
             anim.SetBool("Ground", true);
@@ -111,6 +111,10 @@ public class PlayerController : MonoBehaviour
         // KICK
         else if (Input.GetKeyDown(KeyCode.G)){
             anim.SetBool("Kick", true);
+        }
+        // SUPER KICK
+        else if (Input.GetKeyDown(KeyCode.K)){
+            anim.SetBool("SuperKick", true);
         }
         // PUNCH
         else if (Input.GetKeyDown(KeyCode.H)){

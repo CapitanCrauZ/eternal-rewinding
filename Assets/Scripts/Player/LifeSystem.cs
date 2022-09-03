@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class LifeSystem : MonoBehaviour
 {
     // LIFE VAR
-    public float life;
-    public float maxLife;
+    public float life = 80;
     // SKILLS VAR
     public float punch, punchUsed;
     public float ultimate, ultimateUsed;
@@ -16,7 +15,7 @@ public class LifeSystem : MonoBehaviour
     public float uppercut, uppercutUsed;
 
     // LIFE CANVAS
-    public Image lifeBar;
+    public Slider lifeBar;
     // SKILLS CANVAS
     public Image punchSquare;
     public Image ultimateSquare;
@@ -33,7 +32,7 @@ public class LifeSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lifeBar.fillAmount = life / maxLife;
+        lifeBar.value = life;
 
         punchSquare.fillAmount = punch / punchUsed;
         ultimateSquare.fillAmount = ultimate / ultimateUsed;
