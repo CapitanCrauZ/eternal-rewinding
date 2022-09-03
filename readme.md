@@ -4,6 +4,7 @@
 - [Introduction](#Introduction)
 - [Skills](#Skills)
 - [Screenshots](#Screenshots)
+- [Demo](#Demo)
 - [Developer](#Developer)
 
 ### Introduction
@@ -28,9 +29,7 @@ Progress of the development of the project
 <img src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/screenshots/demoV02.png" width="70%" height="70%">
 
 ### Demo
-
-##### v01
-https://user-images.githubusercontent.com/72707880/188238636-ee4640ee-0c47-4d68-b3a6-50a6204b5cc3.mp4
+https://user-images.githubusercontent.com/72707880/188255462-9e6b08ee-fc60-46c0-90ae-6aacf27af3a9.mp4
 
 ### Developer
 - CaptainCrauZ
