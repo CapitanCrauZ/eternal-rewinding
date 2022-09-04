@@ -29,7 +29,7 @@ public class EnemyLogic : MonoBehaviour
 
         if (other.tag == "FistDamage"){
             if (anim != null){
-                anim.Play("DamagedEnemy");
+                anim.Play("TinyDamagedEnemy");
             }
 
             life -= fistDamage;
@@ -40,7 +40,7 @@ public class EnemyLogic : MonoBehaviour
 
             if (anim != null)
             {
-                anim.Play("DamagedEnemy");
+                anim.Play("TinyDamagedEnemy");
             }
 
             life -= kickDamage;
