@@ -22,14 +22,19 @@ Skills that are working
 ### Screenshots
 Progress of the development of the project
 
-##### v01
+##### Entities Added
 <img src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/screenshots/demoV01.png" width="70%" height="70%">
 
-##### v02
+##### Life Bar Added
 <img src="https://github.com/CapitanCrauZ/ETERNAL-REWINDING/blob/master/media/screenshots/demoV02.png" width="70%" height="70%">
 
 ### Demo
-https://user-images.githubusercontent.com/72707880/188255462-9e6b08ee-fc60-46c0-90ae-6aacf27af3a9.mp4
+
+##### Movements
+https://user-images.githubusercontent.com/72707880/188294529-35b650b3-191a-4e33-9dfd-0b8c5e2a7970.mp4
+
+##### Attacks
+https://user-images.githubusercontent.com/72707880/188294540-0a25c3d9-7c63-4907-ba38-885a4f3db59b.mp4
 
 ### Developer
 - CaptainCrauZ
