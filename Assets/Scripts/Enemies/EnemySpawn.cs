@@ -11,7 +11,6 @@ public class EnemySpawn : MonoBehaviour
     public int enemyCount;
     public int enemyRotation;
 
-
     private void Start()
     {
         transform.Rotate(new Vector3(0f, 30f, 0f) * Time.deltaTime);

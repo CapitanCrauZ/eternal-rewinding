@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera;
     public Animator anim;
     public CharacterController player;
+    public BoxCollider leftFistBoxCol;
+    public BoxCollider rightFistBoxCol;
+    public BoxCollider leftKickBoxCol;
+    public BoxCollider rightKickBoxCol;
 
     private Vector3 camForward;
     private Vector3 camRight;
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         player = GetComponent<CharacterController>();
+        DisableColliders();
     }
 
     // Update is called once per frame
@@ -106,7 +111,6 @@ public class PlayerController : MonoBehaviour
         // RUN
         else if (Input.GetKey(KeyCode.LeftShift)){
             playerSpeed = runSpeed;
-            anim.SetBool("Run", true);
         }
         // KICK
         else if (Input.GetKeyDown(KeyCode.G)){
@@ -126,7 +130,7 @@ public class PlayerController : MonoBehaviour
         } 
 
         else{
-            playerSpeed = 10;
+            playerSpeed = 10f;
         }
     }
 
@@ -153,6 +157,21 @@ public class PlayerController : MonoBehaviour
         if(Time.time-lastSkill<cooldown){
             return;
         }
+
         lastSkill = Time.time;
+    }
+
+    public void ActivateColliders(){
+        leftFistBoxCol.enabled = true;
+        rightFistBoxCol.enabled = true;
+        leftKickBoxCol.enabled = true;
+        rightKickBoxCol.enabled = true;
+    }
+
+    public void DisableColliders(){
+        leftFistBoxCol.enabled = false;
+        rightFistBoxCol.enabled = false;
+        leftKickBoxCol.enabled = false;
+        rightKickBoxCol.enabled = false;
     }
 }

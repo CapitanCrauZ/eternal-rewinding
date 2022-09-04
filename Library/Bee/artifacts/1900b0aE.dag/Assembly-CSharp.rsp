@@ -353,10 +353,11 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Enemies/BossSlimeNavegation.cs"
+"Assets/Scripts/Enemies/EnemyLogic.cs"
 "Assets/Scripts/Enemies/EnemyRutine.cs"
 "Assets/Scripts/Enemies/EnemySpawn.cs"
 "Assets/Scripts/Movimiento.cs"
-"Assets/Scripts/Player/LifeSystem.cs"
+"Assets/Scripts/Player/AutonomousSystem.cs"
 "Assets/Scripts/Player/PlayerController.cs"
 -langversion:9.0
 

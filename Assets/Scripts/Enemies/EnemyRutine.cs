@@ -19,7 +19,7 @@ public class EnemyRutine : MonoBehaviour
 
     public void ComportamientoEnemigo(){
         cronometro += 1 * Time.deltaTime;
-        if (cronometro >=5 )
+        if (cronometro >= 5)
         {
             rutina = Random.Range(0, 3);
             cronometro = 0;
@@ -38,12 +38,10 @@ public class EnemyRutine : MonoBehaviour
                 transform.Translate(Vector3.forward * 2 * Time.deltaTime);
                 anim.SetBool("walk", true);
                 break;
-
         }
     
     }
 
-        // Update is called once per frame
     void Update()
     {
         ComportamientoEnemigo();
