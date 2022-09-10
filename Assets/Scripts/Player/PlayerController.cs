@@ -14,9 +14,8 @@ public class PlayerController : MonoBehaviour
     public float gravity;
     public float dashSpeed;
     public float dashTime;
-    public float cooldown;
 
-    float lastSkill;
+    public bool isEnable = true;
 
     public Camera mainCamera;
     public Animator anim;
@@ -36,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         player = GetComponent<CharacterController>();
         DisableColliders();
+        isEnable = true;
     }
 
     // Update is called once per frame
@@ -99,66 +99,51 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Ground", true);
         }
         // DASH
-        else if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftControl)){
+        else if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftControl) && isEnable == true){
+            isEnable = false;
             StartCoroutine(Dash());
             anim.SetBool("Dash", true);
+            StartCoroutine(CooldownDash());
         }
         // BACK DASH
-        else if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.LeftControl)){
+        else if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.LeftControl) && isEnable == true){
+            isEnable = false;
             StartCoroutine(BackDash());
             anim.SetBool("BackDash", true);
+            StartCoroutine(CooldownDash());
         }
         // RUN
         else if (Input.GetKey(KeyCode.LeftShift)){
             playerSpeed = runSpeed;
         }
         // KICK
-        else if (Input.GetKeyDown(KeyCode.G)){
+        else if (Input.GetKeyDown(KeyCode.G) && isEnable == true){
+            isEnable = false;
             anim.SetBool("Kick", true);
+            StartCoroutine(CooldownAttacks());
         }
         // SUPER KICK
-        else if (Input.GetKeyDown(KeyCode.K)){
+        else if (Input.GetKeyDown(KeyCode.K) && isEnable == true){
+            isEnable = false;
             anim.SetBool("SuperKick", true);
+            StartCoroutine(CooldownAttacks());
         }
         // PUNCH
-        else if (Input.GetKeyDown(KeyCode.H)){
+        else if (Input.GetKeyDown(KeyCode.H) && isEnable == true){
+            isEnable = false;
             anim.SetBool("Punch", true);
+            StartCoroutine(CooldownAttacks());
         }
         // UPPERCUT
-        else if (Input.GetKeyDown(KeyCode.J)){
+        else if (Input.GetKeyDown(KeyCode.J) && isEnable == true){
+            isEnable = false;
             anim.SetBool("Uppercut", true);
+            StartCoroutine(CooldownAttacks());
         } 
 
         else{
             playerSpeed = 10f;
         }
-    }
-
-    IEnumerator Dash(){
-        float startTime = Time.time;
-
-        while(Time.time < startTime + dashTime){
-            player.Move(camForward * dashSpeed * Time.deltaTime);
-            yield return null;
-        }
-    }
-
-    IEnumerator BackDash()
-    {
-        float startTime = Time.time;
-
-        while(Time.time < startTime + dashTime){
-            player.Move(-camForward * dashSpeed * Time.deltaTime);
-            yield return null;
-        }
-    }
-
-    public void SkillCoolDown(){
-        if(Time.time-lastSkill<cooldown){
-            return;
-        }
-
-        lastSkill = Time.time;
     }
 
     public void ActivateColliders(){
@@ -174,4 +159,36 @@ public class PlayerController : MonoBehaviour
         leftKickBoxCol.enabled = false;
         rightKickBoxCol.enabled = false;
     }
+
+    IEnumerator Dash(){
+        float startTime = Time.time;
+
+        while (Time.time < startTime + dashTime)
+        {
+            player.Move(camForward * dashSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+
+    IEnumerator BackDash(){
+        float startTime = Time.time;
+
+        while(Time.time < startTime + dashTime){
+            player.Move(-camForward * dashSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator CooldownDash(){
+        yield return new WaitForSeconds(0.4f);
+        isEnable = true;
+    }
+
+    IEnumerator CooldownAttacks()
+    {
+        yield return new WaitForSeconds(0.15f);
+        isEnable = true;
+    }
+
 }
